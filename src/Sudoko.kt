@@ -9,7 +9,8 @@ fun main() {
 
     check(
         name = "Valid empty 3x3 grid",
-        result = isValidSudoku(List(3) { List(3) { '-' } }),
+        result = isValidSudoku(List(3) { List(3) { '-' } },
+            1),
         correctResult = true
     )
 
@@ -54,7 +55,10 @@ fun main() {
 
     check(
         name = "Valid empty 9x9 grid",
-        result = isValidSudoku(List(9) { List(9) { '-' } }),
+        result = isValidSudoku(
+            List(9) { List(9) { '-' } },
+            3
+        ),
         correctResult = true
     )
 
@@ -71,7 +75,8 @@ fun main() {
                 listOf('9', '6', '1', '5', '3', '7', '2', '8', '4'),
                 listOf('2', '8', '7', '4', '1', '9', '6', '3', '5'),
                 listOf('3', '4', '5', '2', '8', '6', '1', '7', '9')
-            )
+            ),
+            3
         ),
         correctResult = true
     )
@@ -81,21 +86,21 @@ fun main() {
         result = isValidSudoku(
             listOf(
                 listOf('1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'),
-                listOf('3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', '1', '2'),
-                listOf('2', '1', '4', '3', '6', '5', '8', '7', 'A', '9', 'C', 'B', 'E', 'D', 'G', 'F'),
                 listOf('5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', '1', '2', '3', '4'),
-                listOf('4', '3', '2', '1', '8', '7', 'F', 'E', 'G', 'D', '5', '6', '9', 'A', 'B', 'C'),
-                listOf('7', '8', '9', 'A', 'B', 'C', 'D', '1', '2', '3', '4', '5', '6', 'F', 'E', 'G'),
-                listOf('6', '5', '1', '2', '3', '4', 'E', 'D', 'C', 'B', 'A', '9', '8', '7', 'G', 'F'),
                 listOf('9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', '1', '2', '3', '4', '5', '6', '7', '8'),
-                listOf('8', '7', '6', '5', '4', '3', '2', '1', 'E', 'F', 'G', 'D', 'C', 'B', 'A', '9'),
-                listOf('A', '9', '8', '7', 'F', 'E', 'D', 'C', 'B', 'A', '1', '2', '3', '4', '5', '6'),
-                listOf('B', 'C', 'D', 'E', 'G', 'F', 'A', '9', '8', '7', '6', '5', '4', '3', '2', '1'),
-                listOf('C', 'B', 'A', '9', '2', '1', '5', '4', '3', 'D', 'E', 'F', 'G', '8', '7', '6'),
-                listOf('D', 'E', 'F', 'G', '1', '2', '3', 'B', '4', '5', '7', '8', 'A', '9', '6', 'C'),
-                listOf('E', 'D', 'G', 'F', '7', '8', '6', 'A', '5', 'C', '9', 'B', '2', '1', '4', 'D'),
-                listOf('F', 'G', 'E', 'D', 'A', '9', 'C', '5', '6', '1', '8', '7', 'B', 'G', 'F', 'E'),
-                listOf('G', 'F', 'C', 'B', 'E', 'D', '1', '2', '7', '8', '2', 'A', 'F', '5', '9', '3')
+                listOf('D', 'E', 'F', 'G', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C'),
+                listOf('2', '3', '4', '1', '6', '7', '8', '5', 'A', 'B', 'C', '9', 'E', 'F', 'G', 'D'),
+                listOf('6', '7', '8', '5', 'A', 'B', 'C', '9', 'E', 'F', 'G', 'D', '2', '3', '4', '1'),
+                listOf('A', 'B', 'C', '9', 'E', 'F', 'G', 'D', '2', '3', '4', '1', '6', '7', '8', '5'),
+                listOf('E', 'F', 'G', 'D', '2', '3', '4', '1', '6', '7', '8', '5', 'A', 'B', 'C', '9'),
+                listOf('3', '4', '1', '2', '7', '8', '5', '6', 'B', 'C', '9', 'A', 'F', 'G', 'D', 'E'),
+                listOf('7', '8', '5', '6', 'B', 'C', '9', 'A', 'F', 'G', 'D', 'E', '3', '4', '1', '2'),
+                listOf('B', 'C', '9', 'A', 'F', 'G', 'D', 'E', '3', '4', '1', '2', '7', '8', '5', '6'),
+                listOf('F', 'G', 'D', 'E', '3', '4', '1', '2', '7', '8', '5', '6', 'B', 'C', '9', 'A'),
+                listOf('4', '1', '2', '3', '8', '5', '6', '7', 'C', '9', 'A', 'B', 'G', 'D', 'E', 'F'),
+                listOf('8', '5', '6', '7', 'C', '9', 'A', 'B', 'G', 'D', 'E', 'F', '4', '1', '2', '3'),
+                listOf('C', '9', 'A', 'B', 'G', 'D', 'E', 'F', '4', '1', '2', '3', '8', '5', '6', '7'),
+                listOf('G', 'D', 'E', 'F', '4', '1', '2', '3', '8', '5', '6', '7', 'C', '9', 'A', 'B')
             ), 4
         ),
         correctResult = true
@@ -269,7 +274,8 @@ fun main() {
                 listOf('9', '6', '1', '5', '3', '7', '2', '8', '4'),
                 listOf('2', '8', '7', '4', '1', '9', '6', '3', '5'),
                 listOf('3', '4', '5', '2', '8', '6', '1', '7', '5')
-            )
+            ),
+            3
         ),
         correctResult = false
     )
@@ -287,7 +293,8 @@ fun main() {
                 listOf('9', '6', '1', '5', '3', '7', '2', '8', '4'),
                 listOf('2', '8', '7', '4', '1', '9', '6', '3', '5'),
                 listOf('3', '4', '5', '2', '8', '6', '1', '7', '9')
-            )
+            ),
+            3
         ),
         correctResult = false
     )
@@ -305,13 +312,57 @@ fun main() {
                 listOf('9', '6', '1', '5', '3', '7', '2', '8', '4'),
                 listOf('2', '8', '7', '4', '1', '9', '6', '3', '5'),
                 listOf('3', '4', '5', '2', '8', '6', '1', '7', '9')
-            )
+            ),
+            3
         ),
         correctResult = false
     )
 
 }
 
-fun isValidSudoku(grid: List<List<Char>>, subgridSize: Int = 3): Boolean {
-    return false
+fun isValidSudoku(grid: List<List<Char>>, subgridSize: Int): Boolean {
+    val n = grid.size
+
+    if (grid.isEmpty() || grid.any { it.size != n }) return false
+    if (n != subgridSize * subgridSize && !(n == 3 && subgridSize == 1)) return false
+
+    val validChars = mutableSetOf('-').apply {
+        when (n) {
+            3 -> addAll('1'..'3')
+            4 -> addAll('1'..'4')
+            9 -> addAll('1'..'9')
+            16 -> { addAll('1'..'9'); addAll('A'..'G') }
+            else -> return false
+        }
+    }
+
+    if (grid.any { row -> row.any { it !in validChars } }) return false
+
+    for (i in 0..<n) {
+        val rowSeen = mutableSetOf<Char>()
+        val colSeen = mutableSetOf<Char>()
+        for (j in 0..<n) {
+            val rowCell = grid[i][j]
+            if (rowCell != '-' && !rowSeen.add(rowCell)) return false
+
+            val colCell = grid[j][i]
+            if (colCell != '-' && !colSeen.add(colCell)) return false
+        }
+    }
+
+    if (subgridSize > 1) {
+        for (boxRow in 0..<n step subgridSize) {
+            for (boxCol in 0..<n step subgridSize) {
+                val seen = mutableSetOf<Char>()
+                for (i in 0..<subgridSize) {
+                    for (j in 0..<subgridSize) {
+                        val cell = grid[boxRow + i][boxCol + j]
+                        if (cell != '-' && !seen.add(cell)) return false
+                    }
+                }
+            }
+        }
+    }
+
+    return true
 }
