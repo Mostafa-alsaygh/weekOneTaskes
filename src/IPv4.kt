@@ -170,19 +170,16 @@ fun main() {
 
 fun isValidIPv4(ip: String): Boolean {
     val segments = ip.split('.')
-
     if (segments.size != 4) return false
 
     for (segment in segments) {
-        if (segment.isEmpty()) return false
-
-        if (segment.length > 1 && segment[0] == '0') return false
-
-        if (!segment.matches(Regex("\\d+"))) return false
+        if (segment.isEmpty() ||
+            segment.length > 1 && segment[0] == '0' ||
+            !segment.all { it.isDigit() }
+        ) return false
 
         val num = segment.toInt()
         if (num !in 0..255) return false
     }
-
     return true
 }
